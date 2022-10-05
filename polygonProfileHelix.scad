@@ -1,4 +1,4 @@
-module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], sectionPointCount = 0, length = 1, degreesPerSegment = 0.5){ //*screams internally*
+module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], sectionPointCount = 0, length = 1, degreesPerSegment = 0.5){ //*screams internally* (Needs logic for removing duplicate points and reorganizing duplicate or intersecting faces)
 	thatj = 360/degreesPerSegment;
 	numberOfSegments = thatj*length/rate;
 	numberOfPoints = numberOfSegments * sectionPointCount;
@@ -9,8 +9,6 @@ module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], sectionPointC
 	];
 	
 	triangles = [
-//	[1, sectionPointCount, 0],
-//	[sectionPointCount - 1, sectionPointCount, 0],
 	for(e = [1:1:sectionPointCount - 1])
 	[e, 0, e - 1],
 	for(p = [0:1:numberOfPoints - sectionPointCount - 1])
@@ -30,7 +28,7 @@ sectionPolygon = [[2, 0], [15/2 - 0.5, 0], [15/2, 0.5], [15/2 - 0.5, 1], [2, 1]]
 
 difference(){
 	intersection(){
-		polygonProfileHelix(rate=2, sectionPolygon = sectionPolygon, sectionPointCount = 5, length = 3, degreesPerSegment = 15);
+		polygonProfileHelix(rate=1.125, sectionPolygon = sectionPolygon, sectionPointCount = 5, length = 3, degreesPerSegment = 15);
 		
 //		translate([0, 0, 35/2])
 //		cube([25, 11.3, 35], center=true);
