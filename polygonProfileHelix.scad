@@ -23,7 +23,9 @@ module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], length = 1){ 
 	
 	polyhedron(points = points, faces = triangles);
 }
-
-sectionPolygon = [[0.5, 0], [11.25/2 - 0.5, 0], [11.25/2, 0.5], [11.25/2 - 0.5, 1], [0.5, 1]];
-
-polygonProfileHelix(rate=2, sectionPolygon = sectionPolygon, length = 25);
+union(){
+	polygonProfileHelix(rate = 2, sectionPolygon = [[0, 1], [1, 0], [12.5/2, 0], [15/2, 1]], length = 25 - 1);
+	
+	rotate(180)
+	polygonProfileHelix(rate = 2, sectionPolygon = [[0, 0], [1, 1], [12.5/2, 1], [15/2, 0]], length = 25 - 1);
+}
