@@ -20,24 +20,9 @@ module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], length = 1, d
 	[e, e - 1, numberOfPoints - 1],
 	];
 	
-	for(t = [0:1:len(triangles) - 1])
-	for(p = [0, 1, 2])
-	for(q = [triangles[t][p] - 1:-1:0])
-	if((points[q] == points[triangles[t][p]]) && (q != p))
-	echo(triangles[t][p], q, points[q]);
-	
 	polyhedron(points = points, faces = triangles);
 }
 
-sectionPolygon = [[1, 0], [15/2 - 0.5, 0], [15/2, 0.5], [15/2 - 0.5, 1], [1, 1]];
+sectionPolygon = [[0.5, 0], [11.25/2 - 0.5, 0], [11.25/2, 0.5], [11.25/2 - 0.5, 1], [0.5, 1]];
 
-difference(){
-	intersection(){
-		polygonProfileHelix(rate=1, sectionPolygon = sectionPolygon, length = 3, degreesPerSegment = 5);
-		
-		translate([0, 0, 5/2])
-		cube([25, 11.3, 5], center=true);
-	}
-	
- //cylinder(d = 9.3, h = 35, $fn=6);
-}
+polygonProfileHelix(rate=2, sectionPolygon = sectionPolygon, length = 25, degreesPerSegment = 2);
