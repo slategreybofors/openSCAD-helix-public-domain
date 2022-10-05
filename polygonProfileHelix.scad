@@ -9,32 +9,32 @@ module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], sectionPointC
 	];
 	
 	triangles = [
+//	[1, sectionPointCount, 0],
+//	[sectionPointCount - 1, sectionPointCount, 0],
 	for(e = [1:1:sectionPointCount - 1])
 	[e, 0, e - 1],
-	[1, sectionPointCount, 0],
-	[sectionPointCount - 1, sectionPointCount, 0],
-	for(p = [1:1:numberOfPoints - sectionPointCount - 1])
+	for(p = [0:1:numberOfPoints - sectionPointCount - 1])
 	for(t = [
-		[p + sectionPointCount - 1, p + sectionPointCount, p],
 		[p + sectionPointCount, p + 1, p],
+		[p + sectionPointCount - 1, p + sectionPointCount, p],
 	])
 	t,
-	for(e = [numberOfPoints - sectionPointCount:1:numberOfPoints - 1])
+	for(e = [numberOfPoints - sectionPointCount + 1:1:numberOfPoints - 1])
 	[e, e - 1, numberOfPoints - 1],
 	];
 	
 	polyhedron(points = points, faces = triangles);
 }
 
-sectionPolygon = [[5/2, -.125], [15/2 - 1, 0], [15/2, 1], [15/2 - 1, 2], [5/2, 2.125]];
+sectionPolygon = [[2, 0], [15/2 - 0.5, 0], [15/2, 0.5], [15/2 - 0.5, 1], [2, 1]];
 
 difference(){
 	intersection(){
-		polygonProfileHelix(rate=2, sectionPolygon = sectionPolygon, sectionPointCount = 5, length = 25 - 2, degreesPerSegment = 15);
+		polygonProfileHelix(rate=2, sectionPolygon = sectionPolygon, sectionPointCount = 5, length = 3, degreesPerSegment = 15);
 		
 //		translate([0, 0, 35/2])
 //		cube([25, 11.3, 35], center=true);
 	}
 	
-	//cylinder(d = 9.3, h = 35, $fn=6);
+ cylinder(d = 12, h = 35);
 }
