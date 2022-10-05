@@ -1,4 +1,5 @@
-module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], length = 1, degreesPerSegment = 0.5){ //Needs logic for removing duplicate points and reorganizing duplicate or intersecting faces
+module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], length = 1){ //Needs logic for removing duplicate points and reorganizing duplicate or intersecting faces
+	degreesPerSegment = $fa;
 	segmentsPerTurn = 360/degreesPerSegment;
 	numberOfSegments = segmentsPerTurn*length/rate;
 	numberOfPoints = numberOfSegments * len(sectionPolygon);
@@ -25,4 +26,4 @@ module polygonProfileHelix(rate = 1, sectionPolygon = [[0, 0, 0]], length = 1, d
 
 sectionPolygon = [[0.5, 0], [11.25/2 - 0.5, 0], [11.25/2, 0.5], [11.25/2 - 0.5, 1], [0.5, 1]];
 
-polygonProfileHelix(rate=2, sectionPolygon = sectionPolygon, length = 25, degreesPerSegment = 2);
+polygonProfileHelix(rate=2, sectionPolygon = sectionPolygon, length = 25);
