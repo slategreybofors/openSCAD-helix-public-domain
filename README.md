@@ -2,7 +2,7 @@
 
 An OpenSCAD helices library, specifically intended for screws/threads.
 
-I usually prefer to have a permissive license, but I will release this into the Public Domain to leave users unencumbered.
+I usually prefer to have a permissive license, but I will release _this_ into the Public Domain to leave users unencumbered.
 
 # License
 
